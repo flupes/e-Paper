@@ -290,7 +290,7 @@ void Epd::DisplayFrame(const unsigned char* frame_buffer_black, const unsigned c
     if (frame_buffer_black != NULL) {
         SendCommand(DATA_START_TRANSMISSION_1);           
         DelayMs(2);
-        for(int i = 0; i < width * height / 8; i++) {
+        for(unsigned int i = 0; i < width * height / 8; i++) {
             SendData(pgm_read_byte(&frame_buffer_black[i]));  
         }  
         DelayMs(2);
@@ -298,7 +298,7 @@ void Epd::DisplayFrame(const unsigned char* frame_buffer_black, const unsigned c
     if (frame_buffer_red != NULL) {
         SendCommand(DATA_START_TRANSMISSION_2);
         DelayMs(2);
-        for(int i = 0; i < width * height / 8; i++) {
+        for(unsigned int i = 0; i < width * height / 8; i++) {
             SendData(pgm_read_byte(&frame_buffer_red[i]));  
         }  
         DelayMs(2);
@@ -320,13 +320,13 @@ void Epd::ClearFrame(void) {
 
     SendCommand(DATA_START_TRANSMISSION_1);           
     DelayMs(2);
-    for(int i = 0; i < width * height / 8; i++) {
+    for(unsigned int i = 0; i < width * height / 8; i++) {
         SendData(0x00);  
     }  
     DelayMs(2);
     SendCommand(DATA_START_TRANSMISSION_2);           
     DelayMs(2);
-    for(int i = 0; i < width * height / 8; i++) {
+    for(unsigned int i = 0; i < width * height / 8; i++) {
         SendData(0x00);  
     }  
     DelayMs(2);
