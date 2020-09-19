@@ -30,11 +30,20 @@
 
 #include <Arduino.h>
 
-// Pin definition
+#if defined(ARDUINO_ARCH_ESP8266)
+#define CS_PIN          0
+#define DC_PIN          2
+#define RST_PIN         4
+#define BUSY_PIN        5
+// Huzzah SPI MOSI : # 13
+// Huzzah SPI SCK :  # 14
+#else
+// Default Arduino pin definitions
 #define RST_PIN         8
 #define DC_PIN          9
 #define CS_PIN          10
 #define BUSY_PIN        7
+#endif
 
 class EpdIf {
 public:
